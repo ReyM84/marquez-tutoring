@@ -52,7 +52,7 @@ exports.putStudent = function(req, res) {
     });
 };
 
-exports.deleteBeer = function(req, res) {
+exports.deleteStudent = function(req, res) {
     Student.remove({ userId: req.user._id, _id: req.params.beer_id }, function(err) {
         if (err)
             res.send(err);

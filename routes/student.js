@@ -10,4 +10,6 @@ router.route('/students')
 router.route('/students/student_id')
     .get(authController.isAuthenticated, studentController.getStudent)
     .put(authController.isAuthenticated, studentController.putStudent)
-    .delete(authController.isAuthenticated, studentController.deleteBeer);
+    .delete(authController.isAuthenticated, studentController.deleteStudent);
+    
+module.exports = router;

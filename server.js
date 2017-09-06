@@ -26,15 +26,10 @@ app.use(require('method-override')('_method'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(session({
-  secret: '',
-  resave: false,
-  saveUninitialized: true
-}));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cors());
+
+
 app.use('/', index);
 app.use('/students', students);
 app.use('/users', users);
