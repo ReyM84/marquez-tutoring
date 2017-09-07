@@ -2,22 +2,6 @@ const User = require('../models/user');
 var jwt = require('jsonwebtoken');
 var SECRET = process.env.SECRET;
 
-function createJWT(user) {
-    return jwt.sign(
-        {user}, 
-        SECRET,
-        {expiresIn: '24h'}
-    );
-}
-
-function setToken(token) {
-  if (token) {
-    localStorage.setItem('token', token);
-  } else {
-    localStorage.removeItem('token');
-  } 
-}
-
 function postUser(req, res) {
     var user = new User({
         username: req.body.username,
@@ -28,11 +12,8 @@ function postUser(req, res) {
     user.save(function(err) {
         if (err)
             return res.send(err);
-
-        res.render('index') &&
-        res.json({token: createJWT(user)})
     })
-        token => setToken(token);
+            res.render('index')
 };
 
 function getUsers(req, res) {
@@ -47,6 +28,5 @@ function newUser(req, res){
 module.exports = {
     postUser,
     getUsers,
-    newUser,
-    createJWT
+    newUser
 }

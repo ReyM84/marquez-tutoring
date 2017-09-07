@@ -28,9 +28,16 @@
                     <li>
                     <a class="" href="#">About</a>
                     </li>  
-                    
-                   
-            
+                </ul>
+                <ul class="right">
+                <%if (user) { %>
+                <li>
+                    <a class="linav" href="/logout">Log Out</a>
+                </li><%} else { %>
+                
+                <li>
+                    <a class="linav" href="/auth/google">Login with Google</a>
+                </li><%} %>
                 </ul>
         </div>
     </nav>

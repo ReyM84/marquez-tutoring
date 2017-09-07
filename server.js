@@ -1,17 +1,18 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const path = require('path');
-const favicon = require('serve-favicon');
-const logger = require('morgan');
-const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt');
-const passport = require('passport');
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var session = require('express-session');
+var passport = require('passport');
 
 require('dotenv').config();
 
 const app = express();
 
 require('./config/database');
+require('./config/passport');
 
 var index = require('./routes/index');
 var students = require('./routes/students');
@@ -26,8 +27,14 @@ app.use(require('method-override')('_method'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({
+  secret: 'WDIRocks!',
+  resave: false,
+  saveUninitialized: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 
 app.use('/', index);
