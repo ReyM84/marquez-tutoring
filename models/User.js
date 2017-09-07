@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
+var jwt = require('jsonwebtoken')
 
 var UserSchema = new mongoose.Schema({
   username: {
@@ -10,7 +11,8 @@ var UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  created: { type: Date, defaut: Date.now }
 });
 
 UserSchema.pre('save', function(callback) {

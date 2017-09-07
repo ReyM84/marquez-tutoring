@@ -1,6 +1,8 @@
 const Student = require('../models/student');
 
-exports.postStudents = function (req, res) {
+
+
+function postStudents(req, res) {
     var student = new Student();
 
     student.name = req.body.name;
@@ -11,7 +13,7 @@ exports.postStudents = function (req, res) {
 
     student.save(function(err) {
         if (err)
-            res.send(err);
+           return res.send(err);
 
         res.json({message: 'New student has been added', data: student });
     });
@@ -19,26 +21,31 @@ exports.postStudents = function (req, res) {
 
 
 
-exports.getStudents = function(req, res) {
+function getStudents(req, res) {
     Student.find({ userId: req.user_id }, function(err, students) {
-        if (err)
-        res.send(err);
+        if (err) {
+            return res.send(err);
+        }
 
-    res.json(students);
+        res.render('students/index', {student: students});
+
     });
 };
 
+function newStudent(req, res) {
+    res.render('students/new', {user: req.user});
+};
 
-exports.getStudent = function(req, res) {
+function getStudent(req, res) {
     Student.findById({ userId: req.user._id, _id: req.params.beer_id }, function(err, student) {
         if (err)
-        res.send(err);
+         return res.send(err);
 
         res.json(student);
     });
 };
 
-exports.putStudent = function(req, res) {
+function putStudent(req, res) {
     Student.update({ 
         userId: req.user._id, _id: req.params.beer_id }, 
         { grade: req.body.grade, name: req.body.name, 
@@ -46,17 +53,26 @@ exports.putStudent = function(req, res) {
             contact: req.body.contact }, 
             function(err, student) {
                 if (err)
-                res.send(err)
+                 return res.send(err)
 
         res.json({ message: 'Student updated!'})
     });
 };
 
-exports.deleteStudent = function(req, res) {
+function deleteStudent(req, res) {
     Student.remove({ userId: req.user._id, _id: req.params.beer_id }, function(err) {
         if (err)
-            res.send(err);
+            return res.send(err);
 
         res.json({ message: 'Student has been removed!'});
     });
 };
+
+module.exports = {
+    getStudents,
+    newStudent,
+    postStudents,
+    getStudent,
+    putStudent,
+    deleteStudent
+}

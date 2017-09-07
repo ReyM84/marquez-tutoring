@@ -1,23 +1,52 @@
 const User = require('../models/user');
+var jwt = require('jsonwebtoken');
+var SECRET = process.env.SECRET;
 
-exports.postUsers = function(req, res) {
+function createJWT(user) {
+    return jwt.sign(
+        {user}, 
+        SECRET,
+        {expiresIn: '24h'}
+    );
+}
+
+function setToken(token) {
+  if (token) {
+    localStorage.setItem('token', token);
+  } else {
+    localStorage.removeItem('token');
+  } 
+}
+
+function postUser(req, res) {
     var user = new User({
         username: req.body.username,
         password: req.body.password
     });
+    var header = {'User-Agent': 'admin123'};
 
     user.save(function(err) {
         if (err)
-            res.send(err);
-        res.json({ message: 'A new tutor has been added!' })
-    });
+            return res.send(err);
+
+        res.render('index') &&
+        res.json({token: createJWT(user)})
+    })
+        token => setToken(token);
 };
 
-exports.getUsers = function(req, res) {
-    User.find(function(err, users) {
-        if (err)
-        res.send(err);
+function getUsers(req, res) {
+    res.send('User all')
+}; 
 
-    res.json(users);
-    });
-};
+function newUser(req, res){
+    res.render('users/new')
+}
+
+
+module.exports = {
+    postUser,
+    getUsers,
+    newUser,
+    createJWT
+}

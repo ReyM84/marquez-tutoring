@@ -1,0 +1,26 @@
+<%- include('./../_partials/header') %>
+
+
+ 
+  <div class="container fullcards">
+    <% student.forEach(function(m) { %>
+        <div class="row cardss">
+            <div class="col m4 cards">
+            <div class="card">
+                <div class="card-content">
+                <p>Student Name: <%= m.name %></p>
+                <p><%= m.parent %></p>
+                <p><%= m.grade %></p>
+                <p><%= m.contact %></p>
+                </div>
+                <div class="card-action">
+                <a href="#">This is a link</a>
+                <a href="#">This is a link</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    <% }); %>
+  </div>    
+  </body>
+</html>

@@ -14,7 +14,7 @@ const app = express();
 require('./config/database');
 
 var index = require('./routes/index');
-var students = require('./routes/student');
+var students = require('./routes/students');
 var users = require('./routes/users');
 
 app.set('views', path.join(__dirname, 'views'));
