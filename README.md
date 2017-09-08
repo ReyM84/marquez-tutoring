@@ -12,6 +12,12 @@ ___
 #### <i class="devicon-mongodb-plain-wordmark colored"></i> Mongo DB
 #### <i class="devicon-google-plain colored"></i> Google Oauth
 *****
+
+#Why Marquez Tutoring
+
+I chose to do a tutoring website for my mother's tutoring business. She has been a great motivator throughout this course and I felt like doing something for her. 
+******
+
 #Getting Started
 
 Tutors will be able to sign up with their own Google Accounts. They will be able to add a student contact form. 
@@ -20,7 +26,7 @@ Further down the road they will also be able to submit an available form on a we
 
 I also plan to have a separate login for parents so that they can keep track of their student's progress. There will also be a way for them to upload important papers for their students. 
 
-To check out Get rec'd, visit our app on Heroku at at [Get Rec'd](https://get-recd.herokuapp.com)
+ [Marquez Tutoring](https://marqueztutoring.herokuapp.com/)
 
 See the planning page at [Trello](https://trello.com/b/J5WLmF8H/get-recd)
 

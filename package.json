@@ -16,6 +16,7 @@
     "express": "~4.15.2",
     "express-session": "^1.15.5",
     "jsonwebtoken": "^8.0.0",
+    "material-design-icons": "^3.0.1",
     "method-override": "^2.3.9",
     "mongoose": "^4.11.10",
     "morgan": "~1.8.1",
