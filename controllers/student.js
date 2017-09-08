@@ -8,9 +8,9 @@ function postStudents(req, res) {
         doc.students.push(req.body)
         doc.save(function(err, data) {
             if (err) return res.send(err);
-            res.json({message: 'New student has been added', data: data });
-        })
+            res.redirect('/students')        })
     })
+        
 };
 
 

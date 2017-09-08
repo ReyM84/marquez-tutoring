@@ -1,19 +1,19 @@
 <%- include('./../_partials/header') %>
 
 <div class="container">
-<a href="students/new">Add a Student</a>
+<a href="students/new" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">+</i></a>
 </div>
 
   <div class="container fullcards">
     <% user.students.forEach(function(m) { %>
-        <div class="row cardss">
-            <div class="col m4 cards">
+        <div class="row cardss col s3">
+            <div class="col  cards">
             <div class="card">
                 <div class="card-content">
-                <p>Student Name: <%= m.name %></p>
-                <p>Parent Name: <%= m.parent %></p>
-                <p>Grade: <%= m.grade %></p>
-                <p>Contact Number: <%= m.contact %></p>
+                <p><div class="titles">Student Name:</div><%= m.name %></p>
+                <p><div class="titles">Parent Name:</div><%= m.parent %></p>
+                <p><div class="titles"> Grade:</div> <%= m.grade %></p>
+                <p><div class="titles">Contact:</div> <%= m.contact %></p>
                 </div>
             </div>
             </div>

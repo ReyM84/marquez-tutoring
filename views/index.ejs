@@ -3,5 +3,53 @@
   <img class="banner" src="https://i.imgur.com/xElPX5B.jpg" width="100%" alt=""> 
   <h1 id="marquezlogo">Marquez Tutoring</h1>
 </div>
+
+<img id="background" src="https://i.imgur.com/wHLmxUh.png" alt="">
+
+<div class="container contactform">
+  <div class="card ">
+  <div class="card-content">
+  <form method="GET" action="reymarquez25@gmail.com" enctype="text/plain">
+      <div>Subject</div>
+      <input type="text" name="subject" />
+
+      <div>Name</div>
+      <input name="Name" />
+
+      <div>Contact Number</div>
+      <input name="Contat Number" />
+
+      <div>Message</div>
+      <textarea name="Message"></textarea>
+
+      <br/>
+      <input type="submit" value="Send" />
+
+      <input type="hidden" name="body" />
+  </form>
+ </div>         
+ </div>         
+</div>
+  <script>
+    var form = document.getElementsByTagName('form')[0];
+    form.addEventListener('submit',contact,false);
+    function contact(e) {
+        // Prevent Default Form Submission
+        e.preventDefault();
+
+        var target = e.target || e.srcElement;
+        var i = 0;
+        var message = '';
+
+        // Loop Through All Input Fields
+        for(i = 0; i < target.length; ++i) {
+          // Check to make sure it's a value. Don't need to include Buttons
+          if(target[i].type != 'text' && target[i].type != 'textarea') {
+                  // Skip to next input since this one doesn't match our rules
+              continue;
+          }
+        }
+    
+
   </body>
 </html>
