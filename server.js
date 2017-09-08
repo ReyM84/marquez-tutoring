@@ -16,7 +16,6 @@ require('./config/passport');
 
 var index = require('./routes/index');
 var students = require('./routes/students');
-var users = require('./routes/users');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -35,11 +34,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
 app.use('/', index);
 app.use('/students', students);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

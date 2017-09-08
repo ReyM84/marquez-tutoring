@@ -1,33 +1,28 @@
 const Student = require('../models/user');
+const User = require('../models/user');
 
 
 
 function postStudents(req, res) {
-    var student = new Student();
-
-    student.name = req.body.name;
-    student.grade = req.body.grade;
-    student.parent = req.body.parent;
-    student.contact = req.body.contact;
-    student.userId = req.user._id;
-
-    student.save(function(err) {
-        if (err)
-           return res.send(err);
-
-        res.json({message: 'New student has been added', data: student });
-    });
+    User.findById(req.user._id, function(err, doc) {
+        doc.students.push(req.body)
+        doc.save(function(err, data) {
+            if (err) return res.send(err);
+            res.json({message: 'New student has been added', data: data });
+        })
+    })
 };
 
 
 
 function getStudents(req, res) {
-    Student.find({ userId: req.user_id }, function(err, students) {
+    User.find({},function(err, student) {
+        req.student = req.body.student
         if (err) {
             return res.send(err);
         }
 
-        res.render('students/index', {student: students});
+        res.render('students/index', {student: student, user: req.user});
 
     });
 };
@@ -37,7 +32,7 @@ function newStudent(req, res) {
 };
 
 function getStudent(req, res) {
-    Student.findById({ userId: req.user._id, _id: req.params.beer_id }, function(err, student) {
+    Student.findById( function(err, student) {
         if (err)
          return res.send(err);
 
@@ -47,7 +42,7 @@ function getStudent(req, res) {
 
 function putStudent(req, res) {
     Student.update({ 
-        userId: req.user._id, _id: req.params.beer_id }, 
+        userId: req.user._id, _id: req.params.student_id }, 
         { grade: req.body.grade, name: req.body.name, 
             parent: req.body.parent, 
             contact: req.body.contact }, 

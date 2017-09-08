@@ -2,10 +2,9 @@ var mongoose = require('mongoose');
 
 var studentSchema = new mongoose.Schema({
     name: String,
-    grade: Number,
+    grade: String,
     parent: String,
-    contact: String,
-    userId: String,
+    contact: String
 });
 
 var userSchema = new mongoose.Schema({
