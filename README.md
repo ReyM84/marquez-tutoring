@@ -22,11 +22,11 @@ I chose to do a tutoring website for my mother's tutoring business. She has been
 
 Tutors will be able to sign up with their own Google Accounts. They will be able to add a student contact form. 
 
-Further down the road they will also be able to submit an available form on a weekly basis and check when they are scheduled for that week.
+Further down the road they will also be able to submit an availability form on a weekly basis ,as well as check when they are scheduled for that week.
 
 I also plan to have a separate login for parents so that they can keep track of their student's progress. There will also be a way for them to upload important papers for their students. 
 
  [Marquez Tutoring](https://marqueztutoring.herokuapp.com/)
 
-See the planning page at [Trello](https://trello.com/b/J5WLmF8H/get-recd)
+See the planning page at [Trello](https://trello.com/b/jsU22o7m/marquez-tutoring)
 
